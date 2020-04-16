@@ -22,16 +22,16 @@ public class Base extends HttpServlet{
 	
 	@Override
 	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-		System.out.println("init called");
-		super.service(req, res);
+		System.out.println("init called");		
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("doGet called");
+		
 		PrintWriter out = resp.getWriter();
 		out.print("<html><head><title>Test</title></head>");
-		out.print("<body><h1>doGet Have a nice day!</h1></body>");
+		out.print("<body><h1>doGet æ»≥Á«œººø‰!</h1></body>");
 		out.print("</html>");
 		out.close();
 	}
