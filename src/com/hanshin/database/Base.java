@@ -15,17 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/base2")
 public class Base extends HttpServlet{
 	@Override
-	public void init(ServletConfig config) throws ServletException {
-		System.out.println("init called");
-	}
-	
-	
-	@Override
-	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-		System.out.println("init called");		
-	}
-	
-	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("doGet called");
 		
