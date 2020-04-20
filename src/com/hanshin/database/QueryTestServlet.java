@@ -14,6 +14,7 @@ public class QueryTestServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=UTF-8");
+		
 		PrintWriter out = resp.getWriter();
 		out.print("<html><head><title>get</title></head>");
 		out.print("<body>");
@@ -71,6 +72,7 @@ public class QueryTestServlet extends HttpServlet {
 		out.print("성별 : " + gender + "<br/>");
 		out.print("종교 : " + birth + "<br/>");
 		out.print("소개 : " + intro + "<br/>");
+		out.print("전체 Query 문자열 : " + req.getQueryString());
 		
 		out.println("</body></html>");
 		out.close();
