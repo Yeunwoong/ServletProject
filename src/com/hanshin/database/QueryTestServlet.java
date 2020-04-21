@@ -53,6 +53,8 @@ public class QueryTestServlet extends HttpServlet {
 		out.print("<body>");
 		out.print("<h1>POST 방식으로 요청되었습니다</h1>");
 
+		req.setCharacterEncoding("UTF-8");
+		
 		String id = req.getParameter("id");
 		String password = req.getParameter("pwd");
 		String name = req.getParameter("name");
@@ -70,7 +72,7 @@ public class QueryTestServlet extends HttpServlet {
 		}
 		out.print("<br/>");
 		out.print("성별 : " + gender + "<br/>");
-		out.print("종교 : " + birth + "<br/>");
+		out.print("생일 : " + birth + "<br/>");
 		out.print("소개 : " + intro + "<br/>");
 		out.print("전체 Query 문자열 : " + req.getQueryString());
 		
