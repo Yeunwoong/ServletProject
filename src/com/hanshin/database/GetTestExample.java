@@ -17,9 +17,7 @@ public class GetTestExample extends HttpServlet{
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
 	
-		int cnt = 10;
-		String cnt_str = req.getParameter("cnt");		
-		cnt = Integer.parseInt(cnt_str);	
+		int cnt = Integer.parseInt(req.getParameter("cnt"));
 		System.out.printf("cnt = %d\n", cnt); 
 		
 		String[] values = req.getParameterValues("name");
