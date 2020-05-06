@@ -17,9 +17,7 @@ public class Calculator2 extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=UTF-8");
 		req.setCharacterEncoding("UTF-8");
-		
-		Cookie[] cookies = req.getCookies();
-		
+				
 		String v_ = req.getParameter("value");
 		int v = 0;
 		v = Integer.parseInt(v_);
@@ -27,6 +25,8 @@ public class Calculator2 extends HttpServlet {
 
 		ServletContext application = req.getServletContext();
 		HttpSession session = req.getSession();
+		Cookie[] cookies = req.getCookies();
+		
 		// 계산
 		if(op.equals("=")) {
 			int result = 0;
@@ -68,14 +68,11 @@ public class Calculator2 extends HttpServlet {
 			//session.setAttribute("value", v);
 			//session.setAttribute("op", op);
 			
-			// cookie는 문자열만 저장됨 (JSON, XML 사용 가능)
 			Cookie valueCookie = new Cookie("value", String.valueOf(v));
 			Cookie opCookie = new Cookie("op", op);
 			valueCookie.setMaxAge(60*60);
 			resp.addCookie(valueCookie);
 			resp.addCookie(opCookie);
-			
-			//resp.sendRedirect("Calculator2.html");
 			
 		}	
 		

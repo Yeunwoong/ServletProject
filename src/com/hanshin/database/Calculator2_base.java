@@ -18,8 +18,6 @@ public class Calculator2_base extends HttpServlet {
 		resp.setContentType("text/html;charset=UTF-8");
 		req.setCharacterEncoding("UTF-8");
 		
-		Cookie[] cookies = req.getCookies();
-		
 		String v_ = req.getParameter("value");
 		int v = 0;
 		v = Integer.parseInt(v_);
@@ -27,6 +25,7 @@ public class Calculator2_base extends HttpServlet {
 
 		ServletContext application = req.getServletContext();
 		HttpSession session = req.getSession();
+		Cookie[] cookies = req.getCookies();
 		// °è»ê
 		if(op.equals("=")) {
 			int result = 0;
@@ -75,7 +74,7 @@ public class Calculator2_base extends HttpServlet {
 			resp.addCookie(valueCookie);
 			resp.addCookie(opCookie);
 			
-			//resp.sendRedirect("Calculator2.html");
+			resp.sendRedirect("Calculator2.html");
 			
 		}	
 		

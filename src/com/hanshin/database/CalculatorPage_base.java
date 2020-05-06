@@ -11,19 +11,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/calpage")
-public class CalculatorPage extends HttpServlet {
+public class CalculatorPage_base extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=UTF-8");
 		req.setCharacterEncoding("UTF-8");
-		
-		// 쿠키 값 가져오기
-		
-		
-		
-		
-		// 페이지 보여주기				
 		PrintWriter out = resp.getWriter();
+		
+		Cookie[] cookies = req.getCookies();
+		String exp = "0";
+		
+		if(cookies!=null) {
+			for(Cookie c : cookies) {
+				if(c.getName().equals("exp")) {
+					exp = c.getValue();					
+				} 
+			}
+		}
+		
 		out.write("<!DOCTYPE html>");
 		out.write("<html>");
 		out.write("<head>");
@@ -49,7 +54,7 @@ public class CalculatorPage extends HttpServlet {
 		out.write("<form action = \"cal4\" method=\"post\">");
 		out.write("<table>");
 		out.write("<tr>");
-		out.write("<td class=\"output\" colspan=\"4\">0</td>");
+		out.printf("<td class=\"output\" colspan=\"4\">%s</td>", exp);
 		out.write("</tr>");
 		out.write("<tr>");
 		out.write("<td><input type=\"submit\" name=\"operator\" value=\"CE\"/></td>");
