@@ -14,18 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/cal4")
-public class Calculator4 extends HttpServlet {
+@WebServlet("/cal5")
+public class Calculator5 extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// Àü´ÞµÈ POST parameter ÆÄ½Ì
+		
+		
 		String value = req.getParameter("value");
 		String operator = req.getParameter("operator");
 		String dot = req.getParameter("dot");
-		// 
+		
 		String exp = "";
 		Cookie[] cookies = req.getCookies();
-		
 		if(cookies!=null) {
 			for(Cookie c : cookies) {
 				if(c.getName().equals("exp")) {
