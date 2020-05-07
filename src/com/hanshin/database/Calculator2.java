@@ -23,7 +23,8 @@ public class Calculator2 extends HttpServlet {
 		String op = req.getParameter("operator");	
 		
 		//ServletContext application = req.getServletContext();
-		HttpSession session = req.getSession();
+		//HttpSession session = req.getSession();
+		Cookie[] cookies = req.getCookies();
 		
 		int result = 0;
 		if(op.equals("=")) {
@@ -31,8 +32,19 @@ public class Calculator2 extends HttpServlet {
 			//int prev = (int) application.getAttribute("value");
 			//String prev_op = (String) application.getAttribute("operator");
 			
-			int prev = (int) session.getAttribute("value");
-			String prev_op = (String) session.getAttribute("operator");
+			//int prev = (int) session.getAttribute("value");
+			//String prev_op = (String) session.getAttribute("operator");
+			
+			int prev = 0;
+			String prev_op = "";
+			for(Cookie c : cookies) {
+				if(c.getName().equals("value")) {
+					prev = Integer.parseInt(c.getValue());
+				}
+				if(c.getName().equals("operator")){
+					prev_op = c.getValue();
+				}
+			}
 			
 			if(prev_op.equals("+")) {
 				result = prev + v;
@@ -47,9 +59,13 @@ public class Calculator2 extends HttpServlet {
 			//application.setAttribute("value", v);
 			//application.setAttribute("operator", op);
 			
-			session.setAttribute("value", v);
-			session.setAttribute("operator", op);
+			//session.setAttribute("value", v);
+			//session.setAttribute("operator", op);
 			
+			Cookie valueCookie = new Cookie("value", String.valueOf(v));
+			Cookie operatorCookie = new Cookie("operator", op);
+			resp.addCookie(valueCookie);
+			resp.addCookie(operatorCookie);
 			
 		}
 		
