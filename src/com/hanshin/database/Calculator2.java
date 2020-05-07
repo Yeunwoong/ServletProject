@@ -22,12 +22,33 @@ public class Calculator2 extends HttpServlet {
 		int v = Integer.parseInt(v_);
 		String op = req.getParameter("operator");	
 		
+		//ServletContext application = req.getServletContext();
+		HttpSession session = req.getSession();
 		
+		int result = 0;
 		if(op.equals("=")) {
-			// 저장되어있는 값과 연산자 가지고 와서 현재값이랑 연산 후 출력 = result			
+			// 저장되어있는 값과 연산자 가지고 와서 현재값이랑 연산 후 출력 = result	
+			//int prev = (int) application.getAttribute("value");
+			//String prev_op = (String) application.getAttribute("operator");
+			
+			int prev = (int) session.getAttribute("value");
+			String prev_op = (String) session.getAttribute("operator");
+			
+			if(prev_op.equals("+")) {
+				result = prev + v;
+			} else if(prev_op.equals("-")) {
+				result = prev - v;
+			}
+			
+			resp.getWriter().printf("Result is %d\n", result);
 			
 		} else {
 			// 값과 연산자를 저장
+			//application.setAttribute("value", v);
+			//application.setAttribute("operator", op);
+			
+			session.setAttribute("value", v);
+			session.setAttribute("operator", op);
 			
 			
 		}
