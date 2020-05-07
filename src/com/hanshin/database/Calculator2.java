@@ -64,8 +64,12 @@ public class Calculator2 extends HttpServlet {
 			
 			Cookie valueCookie = new Cookie("value", String.valueOf(v));
 			Cookie operatorCookie = new Cookie("operator", op);
+			valueCookie.setMaxAge(60*60*2);
+			
 			resp.addCookie(valueCookie);
 			resp.addCookie(operatorCookie);
+			
+			resp.sendRedirect("Calculator2.html");
 			
 		}
 		
