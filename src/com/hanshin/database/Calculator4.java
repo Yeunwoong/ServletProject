@@ -49,9 +49,14 @@ public class Calculator4 extends HttpServlet {
 			exp += (value==null)?"":value;
 			exp += (operator==null)?"":operator;			
 		}
-			
+		
 		// Cookie 생성 및 추가
 		Cookie cookie = new Cookie("exp", exp);
+		
+		if(operator!=null && operator.equals("C")) {
+			cookie.setMaxAge(0);
+		}
+		
 		resp.addCookie(cookie);
 		
 		// /calpage로 redirect
