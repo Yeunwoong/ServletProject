@@ -17,7 +17,16 @@ public class CalculatorPage extends HttpServlet {
 		resp.setContentType("text/html;charset=UTF-8");
 		req.setCharacterEncoding("UTF-8");
 		
-		int result = 3;
+		String result = "0";
+		// Cookie 값을 result에 저장
+		Cookie[] cookies = req.getCookies();
+		if(cookies!=null) {
+			for(Cookie c : cookies) {
+				if(c.getName().equals("exp")) {
+					result = c.getValue();
+				}
+			}
+		}
 		
 		
 		// 페이지 보여주기
@@ -47,7 +56,7 @@ public class CalculatorPage extends HttpServlet {
 		out.write("<form action = \"cal4\" method=\"post\">");
 		out.write("<table>");
 		out.write("<tr>");
-		out.printf("<td class=\"output\" colspan=\"4\">%d</td>", result);
+		out.printf("<td class=\"output\" colspan=\"4\">%s</td>", result);
 		out.write("</tr>");
 		out.write("<tr>");
 		out.write("<td><input type=\"submit\" name=\"operator\" value=\"CE\"/></td>");
