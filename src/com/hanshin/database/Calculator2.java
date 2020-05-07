@@ -19,18 +19,54 @@ public class Calculator2 extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		
 		// data parsing
+		String v_ = req.getParameter("value");
 		int v = 0;
-		String op = "";
+		v = Integer.parseInt(v_);
+		String op = req.getParameter("operator");
+
+		ServletContext application = req.getServletContext();
+		HttpSession session = req.getSession();
+		Cookie[] cookies = req.getCookies();
 
 		// 계산
 		if(op.equals("=")) {
-			
 			int result = 0;
-			resp.getWriter().printf("result is %d\n", result);
+			//int x = (int) application.getAttribute("value");
+			//String operator = (String)application.getAttribute("op");
+			//int x = (int) session.getAttribute("value");
+			//String operator = (String)session.getAttribute("op");
+			
+			int x = 0;
+			String operator = "";
+			for(Cookie c : cookies) {
+				if(c.getName().equals("value")) {
+					x = Integer.parseInt(c.getValue());					
+				}	
+				if(c.getName().equals("op")) {
+					operator = c.getValue();					
+				}	
+			}
+			
+			int y = v;
+			if(operator.equals("+"))
+				result = x + y;
+			else
+				result = x - y;
+					
+				resp.getWriter().printf("result is %d\n", result);
+				
 			
 			}			
 		else{
-			// 값을 저장						
+			// 값을 저장	
+			// cookie는 문자열만 저장됨 (JSON, XML 사용 가능)
+						Cookie valueCookie = new Cookie("value", String.valueOf(v));
+						Cookie opCookie = new Cookie("op", op);
+						valueCookie.setPath("/cal2");
+						valueCookie.setMaxAge(60*10);
+						
+						resp.addCookie(valueCookie);
+						resp.addCookie(opCookie);
 		}	
 		
 	}	
