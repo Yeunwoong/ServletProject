@@ -17,63 +17,20 @@ public class Calculator2 extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=UTF-8");
 		req.setCharacterEncoding("UTF-8");
-				
-		String v_ = req.getParameter("value");
-		int v = 0;
-		v = Integer.parseInt(v_);
-		String op = req.getParameter("operator");
-
-		ServletContext application = req.getServletContext();
-		HttpSession session = req.getSession();
-		Cookie[] cookies = req.getCookies();
 		
+		// data parsing
+		int v = 0;
+		String op = "";
+
 		// 계산
 		if(op.equals("=")) {
+			
 			int result = 0;
-			//int x = (int) application.getAttribute("value");
-			//String operator = (String)application.getAttribute("op");
-			//int x = (int) session.getAttribute("value");
-			//String operator = (String)session.getAttribute("op");
+			resp.getWriter().printf("result is %d\n", result);
 			
-			int x = 0;
-			for(Cookie c : cookies) {
-				if(c.getName().equals("value")) {
-					x = Integer.parseInt(c.getValue());
-					break;
-				}	
-			}
-			
-			String operator = "";
-			for(Cookie c : cookies) {
-				if(c.getName().equals("op")) {
-					operator = c.getValue();
-					break;
-				}	
-			}
-			
-				
-			int y = v;
-			if(operator.equals("+"))
-				result = x + y;
-			else
-				result = x - y;
-					
-				resp.getWriter().printf("result is %d\n", result);
 			}			
 		else{
-			// 값을 저장
-			//application.setAttribute("value", v);
-			//application.setAttribute("op", op);
-			
-			//session.setAttribute("value", v);
-			//session.setAttribute("op", op);
-			
-			Cookie valueCookie = new Cookie("value", String.valueOf(v));
-			Cookie opCookie = new Cookie("op", op);
-			valueCookie.setMaxAge(60*60);
-			resp.addCookie(valueCookie);
-			resp.addCookie(opCookie);
-			
+			// 값을 저장						
 		}	
 		
 	}	

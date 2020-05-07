@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/cal2")
+@WebServlet("/cal2Base")
 public class Calculator2_base extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,22 +35,16 @@ public class Calculator2_base extends HttpServlet {
 			//String operator = (String)session.getAttribute("op");
 			
 			int x = 0;
-			for(Cookie c : cookies) {
-				if(c.getName().equals("value")) {
-					x = Integer.parseInt(c.getValue());
-					break;
-				}	
-			}
-			
 			String operator = "";
 			for(Cookie c : cookies) {
+				if(c.getName().equals("value")) {
+					x = Integer.parseInt(c.getValue());					
+				}	
 				if(c.getName().equals("op")) {
-					operator = c.getValue();
-					break;
+					operator = c.getValue();					
 				}	
 			}
 			
-				
 			int y = v;
 			if(operator.equals("+"))
 				result = x + y;
