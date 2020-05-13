@@ -7,15 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h3>구구단</h3>
 	<%
-	String user= request.getParameter("name");
-	if(user == null)
-		user = "Guest";
-	%>
-	<h3>
-	Hello 
-	<%=user%>!
-	</h3>
-	
+		for(int i=2;i<10;i++){
+			for(int j=1;j<10;j++){ %>
+				<%=i%> * <%=j%> = <%= i*j %> <br>
+			<%}%> <br>
+		<%}%>
+
 </body>
 </html>

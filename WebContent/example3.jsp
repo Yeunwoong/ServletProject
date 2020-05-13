@@ -7,15 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-	String user= request.getParameter("name");
-	if(user == null)
-		user = "Guest";
+	<h3>선언문 테스트</h3>
+	<%! 
+	public int sum(int a, int b){
+		return a+b;	
+	}
 	%>
-	<h3>
-	Hello 
-	<%=user%>!
-	</h3>
 	
+	덧셈의 결과:
+	<%= sum(2,5) %>
 </body>
 </html>
