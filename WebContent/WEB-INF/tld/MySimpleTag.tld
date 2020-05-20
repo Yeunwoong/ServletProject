@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<j2ee:taglib version="2.0" xmlns:j2ee="http://java.sun.com/xml/ns/j2ee" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://xmlns.jcp.org/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd ">
+  <j2ee:tlib-version>0.0</j2ee:tlib-version>
+  <j2ee:short-name>MySimpleTag</j2ee:short-name>
+  
+  <tag>
+  	<name>print</name>
+  	<tag-class>com.hanshin.database.tag.MyTagSimpleHandler</tag-class>
+  	<body-content>empty</body-content>
+  </tag>
+  
+  <tag>
+  	<name>bodyPrint</name>
+  	<tag-class>com.hanshin.database.tag.MyTagSimpleHandler2</tag-class>
+  	<body-content>scriptless</body-content>
+  </tag>
+  
+  <tag>
+  	<name>sum</name>
+  	<tag-class>com.hanshin.database.tag.MyTagSimpleHandler3</tag-class>
+  	<body-content>empty</body-content>
+  	<attribute>
+  		<name>num1</name>
+  		<required>true</required>
+  		<type>java.lang.Integer</type>
+  	</attribute>
+  	<attribute>
+  		<name>num2</name>
+  		<required>true</required>
+  		<type>java.lang.Integer</type>
+  	</attribute>
+  </tag>
+</j2ee:taglib>
