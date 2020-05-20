@@ -10,6 +10,11 @@
 	${param.id} / ${param.pw } <br>
 	${param["id"]} / ${param["pw"] } <br>
 	${param['id']} / ${param['pw'] } <br>
-	${id} / ${pw}
+	${param } <br>
+	<%--${param.new} <br> 
+	${param.-id} <br>--%>
+	${param["new"] } <br>
+	${param["-id"] } <br>
+		
 </body>
 </html>
