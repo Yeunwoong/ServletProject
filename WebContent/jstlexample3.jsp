@@ -23,5 +23,10 @@
 		<%}%> <br>
 	<%} %>
 	
+	<c:forTokens items="010-1234-5678" delims="-" var="num">
+		${num}		
+	</c:forTokens>
+	
+		
 </body>
 </html>

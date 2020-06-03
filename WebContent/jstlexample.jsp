@@ -14,9 +14,9 @@
 	//request.setAttribute("name", "<font color=blue>오호</font>");
 	
 	%>
-
 	<c:set value="Kyung" var="name"/>
 	${name}  <br>
+	<%=pageContext.getAttribute("name") %>
 	<c:out value="${name}" default = "디폴트"/> <br>
 	<c:out value="${name}" escapeXml = "false"> </c:out> <br>
 	<c:out value="${pageScope.name}"> </c:out> <br>
